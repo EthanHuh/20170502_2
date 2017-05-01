@@ -1,4 +1,26 @@
+import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class main {
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.awt.GLCanvas;
 
+public class Main {
+	public static void main(String[] args) {
+		GLProfile glp = GLProfile.getDefault();
+		GLCapabilities caps = new GLCapabilities(glp);
+		GLCanvas canvas = new GLCanvas(caps);
+		
+		Frame frame = new Frame();
+		frame.setSize(500, 500);
+		frame.add(canvas);
+		frame.setVisible(true);
+		
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e){
+				System.exit(0);
+			}
+		});
+	}
 }
